@@ -1,4 +1,9 @@
 module ApplicationHelper
+  
+  #logo helper -extracted from _header.html.erb
+  def logo
+    image_tag("logo.png", :alt => "Sample App", :class => "round")
+  end
 
   # Return a title on a per-page basis.
   def title
