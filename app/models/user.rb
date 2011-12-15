@@ -41,6 +41,15 @@ class User < ActiveRecord::Base
         return user if user.has_password?(submitted_password)
       end
 
+      class << self
+          def authenticate(email, submitted_password)
+            user = find_by_email(email)
+            (user && user.has_password?(submitted_password)) ? user : nil
+            # return nil if user.nil?
+            # return user if user.has_password?(submitted_password)
+          end
+        end
+
     private
 
       def encrypt_password
